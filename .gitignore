@@ -1,0 +1,74 @@
+# ---------------------------------------------------------------------------
+# ST-GRAD reproduction project
+#
+# Policy:
+#   Tracked  -> source, docs, configs, small JSON reports, raw inputs, and the
+#               supplied author checkpoints (needed to reproduce Track A).
+#   Ignored  -> everything regenerable: bytecode, caches, trained weights,
+#               serialized datasets/predictions, logs, editor/OS junk.
+# ---------------------------------------------------------------------------
+
+# --- Python -----------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pyre/
+.pytype/
+.ipynb_checkpoints/
+
+# --- Packaging / builds -----------------------------------------------------
+build/
+dist/
+*.egg-info/
+.eggs/
+wheels/
+
+# --- Virtual environments ---------------------------------------------------
+.venv/
+venv/
+env/
+ENV/
+.conda/
+
+# --- IDE / editor -----------------------------------------------------------
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+*.swp
+*.swo
+*~
+
+# --- OS ---------------------------------------------------------------------
+.DS_Store
+._*
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# --- Large / regenerable experiment outputs ---------------------------------
+# JSON reports, metrics, and run summaries under artifacts/ stay tracked;
+# weights, datasets, and prediction dumps do not.
+artifacts/**/*.pth
+artifacts/**/*.pt
+artifacts/**/*.ckpt
+artifacts/**/*.npz
+artifacts/**/*.npy
+artifacts/**/*.pkl
+artifacts/**/*.joblib
+
+# Author-repo derived data (rebuilt by preprocessing from data/raw/)
+ST-GRAD-Stock-Prediction-6E7D/data/processed/
+
+# --- Logs / scratch ---------------------------------------------------------
+*.log
+logs/
+*.tmp
+tmp/
+scratch/

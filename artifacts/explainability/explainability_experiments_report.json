@@ -1,0 +1,167 @@
+{
+  "experiment_name": "phase_7_controlled_explainability_experiments",
+  "num_samples_evaluated": 15,
+  "summary": {
+    "H1_faithfulness": false,
+    "H2_view_distinguishability": true,
+    "H3_graph_channels": false,
+    "H4_stability": true
+  },
+  "H1_input_attribution": {
+    "hypothesis": "H1: Input Attribution Faithfulness",
+    "passed": false,
+    "metrics": {
+      "mean_auc_top_deletion": 0.2520974189043045,
+      "mean_auc_random_deletion": 0.06097173144006067,
+      "mean_auc_top_insertion": 0.18970483015808792,
+      "faithfulness_ratio": 4.134659974442967,
+      "t_statistic": 3.2022067187465004,
+      "p_value": 0.003299786961364379,
+      "model_randomization_mean_spearman": 0.5939130434782608,
+      "passed_parameter_randomization_sanity_check": false
+    },
+    "top_5_features": [
+      {
+        "rank": 1,
+        "feature": "BB_Position",
+        "importance_score": 26.345305383205414
+      },
+      {
+        "rank": 2,
+        "feature": "RSI",
+        "importance_score": 15.301409661769867
+      },
+      {
+        "rank": 3,
+        "feature": "RSI_Relative",
+        "importance_score": 12.168554469943047
+      },
+      {
+        "rank": 4,
+        "feature": "Close_MA_Ratio",
+        "importance_score": 11.726255297660828
+      },
+      {
+        "rank": 5,
+        "feature": "High_Low_Ratio",
+        "importance_score": 9.400537177920341
+      }
+    ],
+    "bottom_5_features": [
+      {
+        "rank": 20,
+        "feature": "Momentum_10",
+        "importance_score": 4.602404907345772
+      },
+      {
+        "rank": 21,
+        "feature": "OC_Ratio",
+        "importance_score": 3.505849614739418
+      },
+      {
+        "rank": 22,
+        "feature": "Price_Acceleration",
+        "importance_score": 3.289136156439781
+      },
+      {
+        "rank": 23,
+        "feature": "Volume_Momentum",
+        "importance_score": 0.2985300770960748
+      },
+      {
+        "rank": 24,
+        "feature": "Volume_Change_Pct",
+        "importance_score": 0.15221118414774537
+      }
+    ],
+    "temporal_recency_bias_ratio": 6.845038732105847
+  },
+  "H2_mvca_interventions": {
+    "hypothesis": "H2: MVCA View Distinguishability via Interventions",
+    "passed": true,
+    "metrics": {
+      "mean_st_logit_impact": 0.3506402552127838,
+      "mean_ds_logit_impact": 0.2526762783527374,
+      "mean_dt_logit_impact": 0.06517484188079833,
+      "f_statistic": 10.24679508135719,
+      "p_value": 0.0002375144980660675,
+      "unique_top_ranked_views_across_instances": [
+        "DS",
+        "ST"
+      ],
+      "global_softmax_weights_block_0": {
+        "block_idx": 0,
+        "st_weight": 0.35376015305519104,
+        "ds_weight": 0.3302859365940094,
+        "dt_weight": 0.3159538507461548
+      }
+    }
+  },
+  "H3_graph_interventions": {
+    "hypothesis": "H3: Graph Interventions & Channel Disentanglement",
+    "passed": false,
+    "metrics": {
+      "mean_static_prior_ablation_delta_logit": 0.16537728309631347,
+      "mean_adaptive_graph_ablation_delta_logit": 0.15745777785778045,
+      "mean_top_peer_node_delta_logit": 0.043153238296508786,
+      "static_vs_adaptive_t_stat": 0.18598082317097814,
+      "static_vs_adaptive_p_value": 0.8615104754901521
+    }
+  },
+  "H4_stability_results": {
+    "hypothesis": "H4: Cross-Seed & Input Perturbation Stability",
+    "passed": true,
+    "cross_seed_stability": {
+      "num_seeds": 5,
+      "mean_pairwise_spearman_rank_correlation": 0.6884347826086955,
+      "std_pairwise_spearman_rank_correlation": 0.07278323203722473,
+      "mean_top_k_jaccard_overlap": 0.5238095238095238,
+      "top_k_features_per_seed": [
+        [
+          3,
+          4,
+          12,
+          16,
+          21
+        ],
+        [
+          0,
+          3,
+          4,
+          12,
+          21
+        ],
+        [
+          3,
+          4,
+          5,
+          9,
+          12
+        ],
+        [
+          0,
+          3,
+          4,
+          8,
+          12
+        ],
+        [
+          0,
+          3,
+          4,
+          12,
+          23
+        ]
+      ],
+      "is_stable": true
+    },
+    "input_perturbation_stability": {
+      "noise_std": 0.02,
+      "valid_trials": 5,
+      "mean_cosine_similarity": 0.9998205661773681,
+      "mean_spearman_correlation": 0.9961739130434781,
+      "mean_top_k_jaccard_overlap": 0.8666666666666666,
+      "is_robust": true
+    }
+  }
+}

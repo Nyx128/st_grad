@@ -1,0 +1,237 @@
+# Project: Explainable ST-GRAD — Paper-First Reproduction
+
+You are the lead ML research engineer responsible for implementing and validating a reproducible research project based on the paper:
+
+**ST-GRAD: Multi-view cross-attention and bidirectional diffusion for stock trend prediction**
+
+The goal is to reproduce the published method as faithfully as the available evidence allows, then develop and rigorously evaluate explainability methods for the model.
+
+## Authoritative references
+
+Read all supplied artifacts before making implementation changes:
+
+1. Original paper PDF — authoritative for the published method and experiments.
+2. `ST_GRAD_EXPLAINABILITY_RESEARCH_PLAN.md` — research objectives, hypotheses, and explainability design.
+3. `ST_GRAD_REPRODUCTION_PLAN.md` — reproduction procedure and implementation specification.
+4. `ST_GRAD_REPOSITORY_AUDIT.md` — previously identified source-code discrepancies.
+5. Anonymous repository ZIP — source code, datasets, cluster assignments, and checkpoints.
+
+When these sources disagree, do not silently choose one. Record the disagreement, the evidence, the chosen implementation, and its implications.
+
+## Phase 0: Repository reconnaissance — no model rewrite yet
+
+Inspect the complete repository.
+
+Identify:
+- Entry points, modules, dependencies, configuration, and execution commands.
+- Data files, schemas, date ranges, ticker identities, and missing values.
+- Preprocessing, feature generation, target labels, normalization, and temporal splits.
+- Graph construction, cluster generation, MVCA, BDGC, ST-Blocks, and prediction head.
+- Training loop, checkpoint selection, random seeds, evaluation, and reported metrics.
+- Pretrained checkpoint compatibility.
+- Existing tests and missing tests.
+
+Run the existing code where feasible. Record the exact commands, environment, outputs, errors, and hardware.
+
+Produce:
+- `docs/repository_map.md`
+- `docs/paper_vs_code.md`
+- `docs/reproduction_deviations.md`
+- `docs/runbook.md`
+
+Do not trust the existing repository audit blindly; verify its claims against the actual source code.
+
+## Phase 1: Formalize the paper
+
+Translate the paper's equations into an implementation specification.
+
+For each equation and module, document:
+- Paper section and equation number.
+- Input and output tensor shapes.
+- Trainable parameters.
+- Mathematical operations.
+- Normalization and activation functions.
+- Initialization and masking rules.
+- Whether the repository agrees with the paper.
+- Any unresolved ambiguity.
+
+Pay particular attention to:
+- The 24 engineered features and all formulas in Table 5.
+- Volatility-adaptive target construction and stochastic label smoothing.
+- Behavioral feature extraction and K-Means graph construction.
+- All three MVCA views: ST, DS, and DT.
+- Adaptive view fusion.
+- Static-prior and adaptive graph construction in BDGC.
+- Diffusion direction, diffusion steps, residual connections, and normalization.
+- Prediction head, loss, and thresholding.
+- Temporal split, checkpoint selection, and the isolated stress-test window.
+
+Never invent a missing formula and describe it as published. If a detail cannot be recovered, document the competing interpretations and implement a clearly labeled assumption.
+
+## Phase 2: Build two isolated implementation tracks
+
+Maintain two independently configurable paths:
+
+A. `repo_compat`
+- Reproduce the supplied implementation, including its preprocessing and model behavior.
+- Load the provided checkpoints.
+- Compare reproduced predictions and metrics against the repository's outputs.
+- Use this track to validate repository understanding.
+
+B. `paper_aligned`
+- Implement the published equations and experimental protocol.
+- Correct discrepancies only when supported by the paper or verified additional evidence.
+- Record every unavoidable assumption.
+- Never alter `repo_compat` to make it resemble the paper.
+
+Share utilities only when their behavior is genuinely identical. Give each track its own configuration, artifacts, and experiment logs.
+
+## Phase 3: Data correctness and leakage tests
+
+Implement automated tests for:
+- Expected stock identities and date ranges.
+- Missing, duplicate, unsorted, and invalid records.
+- All 24 feature formulas against hand-calculated examples.
+- Rolling-window warm-up behavior and feature alignment.
+- Target labels calculated from the correct underlying price series.
+- Volatility threshold alignment and stochastic-label randomness.
+- Normalization fitted exclusively on the allowed training period.
+- Chronological sample boundaries and prediction horizons.
+- The clean validation and blind stress-test partition.
+- No future observations entering features, labels, normalization, graph construction, or model selection.
+
+Inspect whether the behavioral graph uses information unavailable at the relevant prediction time. If it does, document and correct the leakage in the paper-aligned track.
+
+Do not silently discard invalid samples. Report counts and reasons.
+
+## Phase 4: Reproduce and validate the model
+
+Implement and test the paper-aligned model in PyTorch.
+
+Requirements:
+- Explicit, documented tensor dimensions.
+- Separate modules for MVCA, adaptive fusion, BDGC, ST-Blocks, and the output head.
+- Correct gradients for every intended trainable parameter.
+- Numerical stability and deterministic evaluation.
+- Unit tests for shapes, finite outputs, gradient flow, parameter counts, and checkpoint loading.
+- A small synthetic-data overfit test.
+- A single-batch forward/backward test before full training.
+
+Start with the paper's reported configuration:
+- Input window: 30 trading days.
+- Features: 24.
+- Stocks: 50.
+- ST-Block layers: 2.
+- Hidden channels: 32.
+- Node embedding dimension: 10.
+- Diffusion steps: 2.
+- Temporal attention heads: 4.
+- Optimizer: AdamW.
+- Learning rate: 0.001.
+- Weight decay: 0.01.
+- Batch size: 32.
+- Epochs: 50.
+- Independent runs: 5.
+
+Treat these as reported settings to verify against the paper, not unquestionable implementation facts.
+
+## Phase 5: Establish the experimental baseline
+
+Implement the published metrics: accuracy, precision, recall, F1, and ROC-AUC.
+
+Save:
+- Per-run metrics and random seeds.
+- Training and validation curves.
+- Best checkpoint selection criteria.
+- Confusion matrices and prediction probabilities.
+- Parameter count, runtime, inference latency, and peak memory.
+- Dataset and configuration hashes.
+- Git commit and software environment.
+
+Use validation data for model selection only. Keep the designated stress-test window blind until the model and decisions are frozen.
+
+Do not tune against the stress-test set.
+
+Compare with the published results, but do not hard-code expected values or change labels, thresholds, or splits to force agreement.
+
+If exact reproduction fails, diagnose discrepancies before adding any research extensions.
+
+## Phase 6: Implement explainability
+
+Only after the paper-aligned baseline passes its acceptance tests, implement explainability as separate modules that do not modify the baseline's forward pass.
+
+Start with:
+
+1. Feature and temporal attribution using Integrated Gradients.
+2. MVCA view-level interventions for ST, DS, and DT.
+3. Graph interventions distinguishing static-prior edges from adaptive-graph edges.
+
+For each explanation, specify:
+- What is being explained: probability, logit, or predicted class.
+- The baseline or intervention definition.
+- How the explanation is calculated.
+- Computational cost.
+- Known limitations.
+- How it will be validated.
+
+Implement quantitative faithfulness tests, including feature deletion/insertion, parameter or model randomization checks where applicable, and graph-edge intervention tests.
+
+Measure explanation stability across random seeds and small input perturbations.
+
+Do not interpret attention weights or fusion coefficients as definitive feature importance without validation.
+
+Do not claim causal relationships from attribution scores.
+
+## Phase 7: Run controlled explainability experiments
+
+Evaluate the following hypotheses independently:
+
+H1: Input attribution identifies features and historical periods that materially influence model predictions.
+
+H2: The three MVCA views provide distinguishable predictive information, as tested through interventions rather than attention visualization alone.
+
+H3: Graph interventions identify influential neighboring stocks and reveal differences between static and adaptive graph contributions.
+
+H4: The explanations remain reasonably stable across seeds and small input perturbations.
+
+For each hypothesis, define the metric, null comparison, experimental protocol, expected failure modes, and acceptance criterion before running the experiment.
+
+Do not add explanation regularization or modify model architecture until the baseline explanation methods have been evaluated.
+
+## Phase 8: Reporting and handoff
+
+Produce:
+- `README.md` with setup, data, and exact commands.
+- `docs/paper_vs_code.md`
+- `docs/reproduction_deviations.md`
+- `docs/data_protocol.md`
+- `docs/model_architecture.md`
+- `docs/explainability_methodology.md`
+- `docs/experiment_protocol.md`
+- `docs/results.md`
+- `docs/limitations.md`
+
+Provide scripts for data preparation, training, evaluation, explanation generation, and report generation.
+
+Every result must be reproducible from a saved configuration and command.
+
+## Working rules
+
+- Work in small, testable increments.
+- Inspect before rewriting.
+- Run tests after each substantive change.
+- Preserve the original repository or a clean copy of it.
+- Do not modify raw data or supplied checkpoints.
+- Do not fabricate missing source code, metrics, or paper details.
+- Do not claim successful reproduction merely because F1 is close to the paper.
+- Clearly separate paper-derived facts, repository-derived facts, and new design decisions.
+- Stop and report blockers when critical equations, labels, or split rules cannot be resolved.
+- Prefer a correct, auditable implementation over a superficially high score.
+
+## Immediate first task
+
+Complete Phase 0 only.
+
+Return a repository map, a paper-versus-code discrepancy table, the commands required to run the supplied implementation, the results of those commands, and a prioritized list of unresolved questions.
+
+Do not start implementing explainability or changing the architecture until the reconnaissance report is complete and reviewed.

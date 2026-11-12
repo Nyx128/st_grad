@@ -1,0 +1,21 @@
+# ST-GRAD reproduction project — Python dependencies
+#
+# Versions below are the ones the project was developed and validated with:
+#   Python 3.11.9, PyTorch 2.14.0+cu132, CUDA 13.2 (RTX 4060 Laptop, Windows)
+#
+# GPU install: PyPI's default torch wheel is CPU-only on Windows. Install the
+# CUDA build first, then the rest:
+#   pip install --index-url https://download.pytorch.org/whl/cu132 "torch==2.14.0"
+#   pip install -r requirements.txt
+#
+# CPU-only machines can simply run `pip install -r requirements.txt`.
+
+# --- Core runtime -----------------------------------------------------------
+torch==2.14.0
+numpy==2.4.6
+pandas==3.0.6
+scipy==1.17.1
+scikit-learn==1.9.1
+
+# --- Test tooling (optional; the suite also runs under stdlib unittest) ------
+pytest==9.1.1
