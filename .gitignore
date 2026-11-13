@@ -63,6 +63,11 @@ artifacts/**/*.npy
 artifacts/**/*.pkl
 artifacts/**/*.joblib
 
+# Downloaded Language Model weights and cache
+models/llm/*
+!models/llm/.gitkeep
+*.gguf
+
 # Author-repo derived data (rebuilt by preprocessing from data/raw/)
 ST-GRAD-Stock-Prediction-6E7D/data/processed/
 
