@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 333" width="100%" height="auto" class="stgrad-svg" style="background:#ffffff; font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;">
+<style>
+  .axis-line { stroke: #cbd5e1; stroke-width: 1; }
+  .grid-line { stroke: #f1f5f9; stroke-width: 1; stroke-dasharray: 3 3; }
+  .tick-text { font-size: 11px; fill: #64748b; }
+  .cohort-text { font-size: 12px; fill: #1e293b; font-weight: 600; text-anchor: end; }
+  .val-text { font-size: 10px; fill: #475569; font-weight: 500; }
+  .legend-item { font-size: 12px; fill: #334155; font-weight: 500; }
+</style>
+<rect width="850" height="333" fill="#ffffff" />
+<text x="220" y="32" font-size="16" font-weight="700" fill="#0f172a">Graph Channel Disentanglement: Static Prior vs Dynamic Learned Diffusion</text>
+<text x="220" y="50" font-size="12" fill="#64748b">Target logit shift |Δlogit| under isolated graph channel removals</text>
+<rect x="440" y="24" width="12" height="12" rx="2" fill="#0284c7"/>
+<text x="458" y="35" class="legend-item">Static Prior</text>
+<rect x="550" y="24" width="12" height="12" rx="2" fill="#8b5cf6"/>
+<text x="568" y="35" class="legend-item">Adaptive Dynamic</text>
+<rect x="690" y="24" width="12" height="12" rx="2" fill="#ec4899"/>
+<text x="708" y="35" class="legend-item">Total Spatial</text>
+<line x1="220.0" y1="75" x2="220.0" y2="283" class="grid-line"/>
+<text x="220.0" y="301" text-anchor="middle" class="tick-text">0.00</text>
+<line x1="334.0" y1="75" x2="334.0" y2="283" class="grid-line"/>
+<text x="334.0" y="301" text-anchor="middle" class="tick-text">0.05</text>
+<line x1="448.0" y1="75" x2="448.0" y2="283" class="grid-line"/>
+<text x="448.0" y="301" text-anchor="middle" class="tick-text">0.09</text>
+<line x1="562.0" y1="75" x2="562.0" y2="283" class="grid-line"/>
+<text x="562.0" y="301" text-anchor="middle" class="tick-text">0.14</text>
+<line x1="676.0" y1="75" x2="676.0" y2="283" class="grid-line"/>
+<text x="676.0" y="301" text-anchor="middle" class="tick-text">0.19</text>
+<line x1="790.0" y1="75" x2="790.0" y2="283" class="grid-line"/>
+<text x="790.0" y="301" text-anchor="middle" class="tick-text">0.23</text>
+<line x1="220" y1="283" x2="790" y2="283" class="axis-line"/>
+<line x1="220" y1="75" x2="220" y2="283" class="axis-line"/>
+<text x="208" y="99" class="cohort-text">Clean Val (Track B)</text>
+<rect x="220" y="75" width="227.0" height="11" rx="2" fill="#0284c7"/>
+<text x="452.9924677833506" y="84" class="val-text">0.093</text>
+<rect x="220" y="89" width="252.5" height="11" rx="2" fill="#8b5cf6"/>
+<text x="478.5430985705621" y="98" class="val-text">0.103</text>
+<rect x="220" y="103" width="386.2" height="11" rx="2" fill="#ec4899"/>
+<text x="612.2241427362534" y="112" class="val-text">0.158</text>
+<text x="208" y="151" class="cohort-text">Stress (Track B)</text>
+<rect x="220" y="127" width="243.1" height="11" rx="2" fill="#0284c7"/>
+<text x="469.1179264443401" y="136" class="val-text">0.100</text>
+<rect x="220" y="141" width="284.1" height="11" rx="2" fill="#8b5cf6"/>
+<text x="510.0880526599295" y="150" class="val-text">0.116</text>
+<rect x="220" y="155" width="412.5" height="11" rx="2" fill="#ec4899"/>
+<text x="638.4558124330871" y="164" class="val-text">0.169</text>
+<text x="208" y="203" class="cohort-text">Clean Val (Track A)</text>
+<rect x="220" y="179" width="315.7" height="11" rx="2" fill="#0284c7"/>
+<text x="541.7420405524508" y="188" class="val-text">0.129</text>
+<rect x="220" y="193" width="363.0" height="11" rx="2" fill="#8b5cf6"/>
+<text x="589.0253104773919" y="202" class="val-text">0.149</text>
+<rect x="220" y="207" width="446.0" height="11" rx="2" fill="#ec4899"/>
+<text x="671.9793904836148" y="216" class="val-text">0.183</text>
+<text x="208" y="255" class="cohort-text">Stress (Track A)</text>
+<rect x="220" y="231" width="230.3" height="11" rx="2" fill="#0284c7"/>
+<text x="456.30878737298224" y="240" class="val-text">0.094</text>
+<rect x="220" y="245" width="475.0" height="11" rx="2" fill="#8b5cf6"/>
+<text x="701.0" y="254" class="val-text">0.194</text>
+<rect x="220" y="259" width="425.6" height="11" rx="2" fill="#ec4899"/>
+<text x="651.569307602801" y="268" class="val-text">0.174</text>
+</svg>

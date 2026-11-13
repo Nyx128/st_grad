@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 480" width="100%" height="auto" class="stgrad-svg" style="background:#ffffff; font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;">
+<style>
+  .axis-line { stroke: #cbd5e1; stroke-width: 1; }
+  .grid-line { stroke: #f1f5f9; stroke-width: 1; stroke-dasharray: 3 3; }
+  .tick-text { font-size: 11px; fill: #64748b; }
+  .feat-label { font-size: 12px; fill: #1e293b; font-weight: 500; text-anchor: end; }
+  .bar-clean { fill: #4f46e5; rx: 3px; }
+  .bar-stress { fill: #ef4444; rx: 3px; }
+  .legend-text { font-size: 12px; fill: #334155; font-weight: 500; }
+  .val-text { font-size: 10px; fill: #475569; }
+</style>
+<rect width="850" height="480" fill="#ffffff" />
+<text x="220" y="34" font-size="16" font-weight="700" fill="#0f172a">Feature Importance: Clean Val vs Blind Stress (Paper-Aligned Track B)</text>
+<text x="220" y="52" font-size="12" fill="#64748b">Integrated Gradients mean attribution magnitude |Top 10 drivers</text>
+<rect x="560" y="24" width="14" height="14" rx="3" fill="#4f46e5"/>
+<text x="580" y="36" class="legend-text">Clean Val</text>
+<rect x="670" y="24" width="14" height="14" rx="3" fill="#ef4444"/>
+<text x="690" y="36" class="legend-text">Blind Stress</text>
+<line x1="220.0" y1="70" x2="220.0" y2="430" class="grid-line"/>
+<text x="220.0" y="448" text-anchor="middle" class="tick-text">0.000</text>
+<line x1="334.0" y1="70" x2="334.0" y2="430" class="grid-line"/>
+<text x="334.0" y="448" text-anchor="middle" class="tick-text">0.383</text>
+<line x1="448.0" y1="70" x2="448.0" y2="430" class="grid-line"/>
+<text x="448.0" y="448" text-anchor="middle" class="tick-text">0.767</text>
+<line x1="562.0" y1="70" x2="562.0" y2="430" class="grid-line"/>
+<text x="562.0" y="448" text-anchor="middle" class="tick-text">1.150</text>
+<line x1="676.0" y1="70" x2="676.0" y2="430" class="grid-line"/>
+<text x="676.0" y="448" text-anchor="middle" class="tick-text">1.533</text>
+<line x1="790.0" y1="70" x2="790.0" y2="430" class="grid-line"/>
+<text x="790.0" y="448" text-anchor="middle" class="tick-text">1.917</text>
+<line x1="220" y1="430" x2="790" y2="430" class="axis-line"/>
+<line x1="220" y1="70" x2="220" y2="430" class="axis-line"/>
+<text x="208" y="88" class="feat-label">BB_Position</text>
+<rect x="220" y="72" width="483.8" height="14" class="bar-clean"/>
+<text x="709.8191608118926" y="83" class="val-text">1.627</text>
+<rect x="220" y="88" width="495.7" height="14" class="bar-stress"/>
+<text x="721.6521739130435" y="99" class="val-text">1.667</text>
+<text x="208" y="124" class="feat-label">RSI</text>
+<rect x="220" y="108" width="351.2" height="14" class="bar-clean"/>
+<text x="577.2275064989567" y="119" class="val-text">1.181</text>
+<rect x="220" y="124" width="416.3" height="14" class="bar-stress"/>
+<text x="642.3185546997797" y="135" class="val-text">1.400</text>
+<text x="208" y="160" class="feat-label">Close_MA_Ratio</text>
+<rect x="220" y="144" width="270.6" height="14" class="bar-clean"/>
+<text x="496.62794126776646" y="155" class="val-text">0.910</text>
+<rect x="220" y="160" width="275.7" height="14" class="bar-stress"/>
+<text x="501.6524123126143" y="171" class="val-text">0.927</text>
+<text x="208" y="196" class="feat-label">RSI_Relative</text>
+<rect x="220" y="180" width="210.2" height="14" class="bar-clean"/>
+<text x="436.23424477713854" y="191" class="val-text">0.707</text>
+<rect x="220" y="196" width="245.6" height="14" class="bar-stress"/>
+<text x="471.5759670117315" y="207" class="val-text">0.826</text>
+<text x="208" y="232" class="feat-label">ROC</text>
+<rect x="220" y="216" width="193.1" height="14" class="bar-clean"/>
+<text x="419.09528335684905" y="227" class="val-text">0.649</text>
+<rect x="220" y="232" width="187.1" height="14" class="bar-stress"/>
+<text x="413.129526825302" y="243" class="val-text">0.629</text>
+<text x="208" y="268" class="feat-label">Momentum_5</text>
+<rect x="220" y="252" width="162.2" height="14" class="bar-clean"/>
+<text x="388.1934242811268" y="263" class="val-text">0.545</text>
+<rect x="220" y="268" width="160.1" height="14" class="bar-stress"/>
+<text x="386.12302882692626" y="279" class="val-text">0.538</text>
+<text x="208" y="304" class="feat-label">Volatility</text>
+<rect x="220" y="288" width="160.1" height="14" class="bar-clean"/>
+<text x="386.07384116638804" y="299" class="val-text">0.538</text>
+<rect x="220" y="304" width="146.0" height="14" class="bar-stress"/>
+<text x="372.04587109817305" y="315" class="val-text">0.491</text>
+<text x="208" y="340" class="feat-label">Relative_Close</text>
+<rect x="220" y="324" width="129.7" height="14" class="bar-clean"/>
+<text x="355.7487202848922" y="335" class="val-text">0.436</text>
+<rect x="220" y="340" width="141.1" height="14" class="bar-stress"/>
+<text x="367.06727983884446" y="351" class="val-text">0.474</text>
+<text x="208" y="376" class="feat-label">MA5_vs_MA20</text>
+<rect x="220" y="360" width="131.7" height="14" class="bar-clean"/>
+<text x="357.68733902310316" y="371" class="val-text">0.443</text>
+<rect x="220" y="376" width="133.3" height="14" class="bar-stress"/>
+<text x="359.32623522299986" y="387" class="val-text">0.448</text>
+<text x="208" y="412" class="feat-label">Price_Volume_Corr</text>
+<rect x="220" y="396" width="127.6" height="14" class="bar-clean"/>
+<text x="353.55824705676997" y="407" class="val-text">0.429</text>
+<rect x="220" y="412" width="129.0" height="14" class="bar-stress"/>
+<text x="354.95589979540966" y="423" class="val-text">0.434</text>
+</svg>

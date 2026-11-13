@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 380" width="100%" height="auto" class="stgrad-svg" style="background:#ffffff; font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;">
+<style>
+  .axis-line { stroke: #cbd5e1; stroke-width: 1; }
+  .grid-line { stroke: #f1f5f9; stroke-width: 1; stroke-dasharray: 3 3; }
+  .tick-text { font-size: 11px; fill: #64748b; }
+  .line-clean { stroke: #4f46e5; stroke-width: 2.5; fill: none; stroke-linecap: round; }
+  .area-clean { fill: #4f46e5; fill-opacity: 0.08; }
+  .line-stress { stroke: #ef4444; stroke-width: 2.5; fill: none; stroke-linecap: round; }
+  .area-stress { fill: #ef4444; fill-opacity: 0.08; }
+  .legend-item { font-size: 12px; fill: #334155; font-weight: 500; }
+</style>
+<rect width="850" height="380" fill="#ffffff" />
+<text x="65" y="32" font-size="16" font-weight="700" fill="#0f172a">Temporal Saliency Decay Across 30-Day Lookback (Clean Val vs Stress)</text>
+<text x="65" y="50" font-size="12" fill="#64748b">Integrated Gradients attribution per time step (0 = -29 days, 29 = immediate prior day)</text>
+<line x1="590" y1="36" x2="615" y2="36" stroke="#4f46e5" stroke-width="3"/>
+<circle cx="603" cy="36" r="3" fill="#4f46e5"/>
+<text x="625" y="40" class="legend-item">Clean Val</text>
+<line x1="705" y1="36" x2="730" y2="36" stroke="#ef4444" stroke-width="3"/>
+<circle cx="718" cy="36" r="3" fill="#ef4444"/>
+<text x="740" y="40" class="legend-item">Blind Stress</text>
+<line x1="65" y1="320.0" x2="810" y2="320.0" class="grid-line"/>
+<text x="55" y="324.0" text-anchor="end" class="tick-text">0.000</text>
+<line x1="65" y1="270.0" x2="810" y2="270.0" class="grid-line"/>
+<text x="55" y="274.0" text-anchor="end" class="tick-text">1.582</text>
+<line x1="65" y1="220.0" x2="810" y2="220.0" class="grid-line"/>
+<text x="55" y="224.0" text-anchor="end" class="tick-text">3.165</text>
+<line x1="65" y1="169.99999999999997" x2="810" y2="169.99999999999997" class="grid-line"/>
+<text x="55" y="173.99999999999997" text-anchor="end" class="tick-text">4.747</text>
+<line x1="65" y1="120.0" x2="810" y2="120.0" class="grid-line"/>
+<text x="55" y="124.0" text-anchor="end" class="tick-text">6.329</text>
+<line x1="65" y1="70.0" x2="810" y2="70.0" class="grid-line"/>
+<text x="55" y="74.0" text-anchor="end" class="tick-text">7.911</text>
+<line x1="65.0" y1="70" x2="65.0" y2="320" class="grid-line"/>
+<text x="65.0" y="338" text-anchor="middle" class="tick-text">t-29</text>
+<line x1="193.44827586206898" y1="70" x2="193.44827586206898" y2="320" class="grid-line"/>
+<text x="193.44827586206898" y="338" text-anchor="middle" class="tick-text">t-24</text>
+<line x1="321.89655172413796" y1="70" x2="321.89655172413796" y2="320" class="grid-line"/>
+<text x="321.89655172413796" y="338" text-anchor="middle" class="tick-text">t-19</text>
+<line x1="450.3448275862069" y1="70" x2="450.3448275862069" y2="320" class="grid-line"/>
+<text x="450.3448275862069" y="338" text-anchor="middle" class="tick-text">t-14</text>
+<line x1="578.7931034482759" y1="70" x2="578.7931034482759" y2="320" class="grid-line"/>
+<text x="578.7931034482759" y="338" text-anchor="middle" class="tick-text">t-9</text>
+<line x1="707.2413793103448" y1="70" x2="707.2413793103448" y2="320" class="grid-line"/>
+<text x="707.2413793103448" y="338" text-anchor="middle" class="tick-text">t-4</text>
+<text x="810" y="338" text-anchor="middle" class="tick-text">t (latest)</text>
+<path d="M 65.0 315.9 L 90.7 315.1 L 116.4 314.1 L 142.1 315.5 L 167.8 314.9 L 193.4 313.6 L 219.1 315.0 L 244.8 314.6 L 270.5 315.0 L 296.2 315.4 L 321.9 314.4 L 347.6 313.6 L 373.3 314.4 L 399.0 315.3 L 424.7 316.0 L 450.3 315.8 L 476.0 313.8 L 501.7 313.6 L 527.4 315.3 L 553.1 312.5 L 578.8 313.0 L 604.5 316.2 L 630.2 315.0 L 655.9 315.5 L 681.6 315.1 L 707.2 313.7 L 732.9 313.9 L 758.6 313.9 L 784.3 312.5 L 810.0 116.4 L 810.0 320 L 65.0 320 Z" class="area-clean" />
+<path d="M 65.0 315.9 L 90.7 315.1 L 116.4 314.1 L 142.1 315.5 L 167.8 314.9 L 193.4 313.6 L 219.1 315.0 L 244.8 314.6 L 270.5 315.0 L 296.2 315.4 L 321.9 314.4 L 347.6 313.6 L 373.3 314.4 L 399.0 315.3 L 424.7 316.0 L 450.3 315.8 L 476.0 313.8 L 501.7 313.6 L 527.4 315.3 L 553.1 312.5 L 578.8 313.0 L 604.5 316.2 L 630.2 315.0 L 655.9 315.5 L 681.6 315.1 L 707.2 313.7 L 732.9 313.9 L 758.6 313.9 L 784.3 312.5 L 810.0 116.4" class="line-clean" />
+<path d="M 65.0 316.2 L 90.7 315.5 L 116.4 314.3 L 142.1 315.6 L 167.8 315.1 L 193.4 313.6 L 219.1 315.0 L 244.8 314.3 L 270.5 315.1 L 296.2 315.4 L 321.9 314.4 L 347.6 313.9 L 373.3 314.2 L 399.0 315.0 L 424.7 316.1 L 450.3 316.0 L 476.0 313.8 L 501.7 313.6 L 527.4 315.3 L 553.1 312.6 L 578.8 313.0 L 604.5 315.8 L 630.2 314.8 L 655.9 315.3 L 681.6 314.9 L 707.2 313.5 L 732.9 313.7 L 758.6 313.5 L 784.3 312.7 L 810.0 111.7 L 810.0 320 L 65.0 320 Z" class="area-stress" />
+<path d="M 65.0 316.2 L 90.7 315.5 L 116.4 314.3 L 142.1 315.6 L 167.8 315.1 L 193.4 313.6 L 219.1 315.0 L 244.8 314.3 L 270.5 315.1 L 296.2 315.4 L 321.9 314.4 L 347.6 313.9 L 373.3 314.2 L 399.0 315.0 L 424.7 316.1 L 450.3 316.0 L 476.0 313.8 L 501.7 313.6 L 527.4 315.3 L 553.1 312.6 L 578.8 313.0 L 604.5 315.8 L 630.2 314.8 L 655.9 315.3 L 681.6 314.9 L 707.2 313.5 L 732.9 313.7 L 758.6 313.5 L 784.3 312.7 L 810.0 111.7" class="line-stress" />
+<line x1="65" y1="320" x2="810" y2="320" class="axis-line"/>
+<line x1="65" y1="70" x2="65" y2="320" class="axis-line"/>
+</svg>

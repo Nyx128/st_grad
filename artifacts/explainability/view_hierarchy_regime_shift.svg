@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 420" width="100%" height="auto" class="stgrad-svg" style="background:#ffffff; font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;">
+<style>
+  .axis-line { stroke: #cbd5e1; stroke-width: 1; }
+  .grid-line { stroke: #f1f5f9; stroke-width: 1; stroke-dasharray: 3 3; }
+  .tick-text { font-size: 11px; fill: #64748b; }
+  .cohort-label { font-size: 12px; fill: #0f172a; font-weight: 600; text-anchor: middle; }
+  .bar-text { font-size: 10px; fill: #334155; font-weight: 500; text-anchor: middle; }
+  .legend-item { font-size: 12px; fill: #334155; font-weight: 500; }
+</style>
+<rect width="850" height="420" fill="#ffffff" />
+<text x="70" y="34" font-size="16" font-weight="700" fill="#0f172a">MVCA View Reliance: ST vs DS vs DT Ablation Shift across Regimes &amp; Tracks</text>
+<text x="70" y="52" font-size="12" fill="#64748b">Mean target logit change (|Δlogit|) when view representation is zero-ablated</text>
+<rect x="520" y="26" width="14" height="14" rx="3" fill="#3b82f6"/>
+<text x="540" y="38" class="legend-item">ST View</text>
+<rect x="620" y="26" width="14" height="14" rx="3" fill="#10b981"/>
+<text x="640" y="38" class="legend-item">DS/FS View</text>
+<rect x="720" y="26" width="14" height="14" rx="3" fill="#f59e0b"/>
+<text x="740" y="38" class="legend-item">DT/FT View</text>
+<line x1="70" y1="350.0" x2="800" y2="350.0" class="grid-line"/>
+<text x="60" y="354.0" text-anchor="end" class="tick-text">0.00</text>
+<line x1="70" y1="296.0" x2="800" y2="296.0" class="grid-line"/>
+<text x="60" y="300.0" text-anchor="end" class="tick-text">0.10</text>
+<line x1="70" y1="242.0" x2="800" y2="242.0" class="grid-line"/>
+<text x="60" y="246.0" text-anchor="end" class="tick-text">0.20</text>
+<line x1="70" y1="188.0" x2="800" y2="188.0" class="grid-line"/>
+<text x="60" y="192.0" text-anchor="end" class="tick-text">0.29</text>
+<line x1="70" y1="134.00000000000003" x2="800" y2="134.00000000000003" class="grid-line"/>
+<text x="60" y="138.00000000000003" text-anchor="end" class="tick-text">0.39</text>
+<line x1="70" y1="80.0" x2="800" y2="80.0" class="grid-line"/>
+<text x="60" y="84.0" text-anchor="end" class="tick-text">0.49</text>
+<line x1="70" y1="350" x2="800" y2="350" class="axis-line"/>
+<line x1="70" y1="80" x2="70" y2="350" class="axis-line"/>
+<rect x="109.2" y="170.2" width="32" height="179.8" rx="3" fill="#3b82f6"/>
+<text x="125.2" y="164.2" class="bar-text">0.327</text>
+<rect x="145.2" y="167.5" width="32" height="182.5" rx="3" fill="#10b981"/>
+<text x="161.2" y="161.5" class="bar-text">0.332</text>
+<rect x="181.2" y="312.4" width="32" height="37.6" rx="3" fill="#f59e0b"/>
+<text x="197.2" y="306.4" class="bar-text">0.068</text>
+<text x="161.2" y="372" class="cohort-label">Clean Val</text>
+<text x="161.2" y="388" font-size="10" fill="#64748b" text-anchor="middle">(Paper-Aligned)</text>
+<rect x="291.8" y="140.3" width="32" height="209.7" rx="3" fill="#3b82f6"/>
+<text x="307.8" y="134.3" class="bar-text">0.381</text>
+<rect x="327.8" y="134.0" width="32" height="216.0" rx="3" fill="#10b981"/>
+<text x="343.8" y="128.0" class="bar-text">0.392</text>
+<rect x="363.8" y="315.4" width="32" height="34.6" rx="3" fill="#f59e0b"/>
+<text x="379.8" y="309.4" class="bar-text">0.063</text>
+<text x="343.8" y="372" class="cohort-label">Blind Stress</text>
+<text x="343.8" y="388" font-size="10" fill="#64748b" text-anchor="middle">(Paper-Aligned)</text>
+<rect x="474.2" y="189.8" width="32" height="160.2" rx="3" fill="#3b82f6"/>
+<text x="490.2" y="183.8" class="bar-text">0.291</text>
+<rect x="510.2" y="172.5" width="32" height="177.5" rx="3" fill="#10b981"/>
+<text x="526.2" y="166.5" class="bar-text">0.323</text>
+<rect x="546.2" y="267.8" width="32" height="82.2" rx="3" fill="#f59e0b"/>
+<text x="562.2" y="261.8" class="bar-text">0.149</text>
+<text x="526.2" y="372" class="cohort-label">Clean Val</text>
+<text x="526.2" y="388" font-size="10" fill="#64748b" text-anchor="middle">(Repo-Compat)</text>
+<rect x="656.8" y="182.9" width="32" height="167.1" rx="3" fill="#3b82f6"/>
+<text x="672.8" y="176.9" class="bar-text">0.304</text>
+<rect x="692.8" y="161.2" width="32" height="188.8" rx="3" fill="#10b981"/>
+<text x="708.8" y="155.2" class="bar-text">0.343</text>
+<rect x="728.8" y="263.5" width="32" height="86.5" rx="3" fill="#f59e0b"/>
+<text x="744.8" y="257.5" class="bar-text">0.157</text>
+<text x="708.8" y="372" class="cohort-label">Blind Stress</text>
+<text x="708.8" y="388" font-size="10" fill="#64748b" text-anchor="middle">(Repo-Compat)</text>
+</svg>
