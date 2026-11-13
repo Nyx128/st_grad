@@ -90,3 +90,20 @@ Instance-level counterfactual ablation demonstrates clear differentiation among 
 - Ablating the Static Prior Graph causes a mean logit shift of **$0.165$**.
 - Ablating the Adaptive Learned Graph causes a mean logit shift of **$0.157$**.
 - The nearly identical magnitudes confirm that ST-GRAD relies equally on long-term macro-sector structural anchors and dynamic, short-term data-driven correlations, providing empirical justification for the hybrid BDGC design.
+
+---
+
+## 5. Phase 5: Dual-Track Benchmark & Regime Shift Experiments
+
+Detailed report: [`docs/explainability_regime_benchmark.md`](explainability_regime_benchmark.md)  
+Visual Dashboard: [`artifacts/explainability/regime_benchmark_dashboard.html`](../artifacts/explainability/regime_benchmark_dashboard.html)  
+
+### 5.1 Hypothesis H6 Evaluation (Regime Shift)
+- **Feature Ranking Invariance:** Spearman rank correlation between Clean Validation (normal market) and Blind Stress (market shock) is **$\rho = 0.9930$** ($p = 6.16 \times 10^{-22}$), with 100% Top-5 feature overlap (`BB_Position`, `RSI`, `Close_MA_Ratio`, `RSI_Relative`, `ROC`).
+- **Dynamic Amplitude Amplification:** Under stress, ST-GRAD amplifies its reliance on spatial views ($\Psi_{\text{ST}}: +16.6\%$, $\Psi_{\text{DS}}: +18.4\%$) and increases temporal recency concentration ($10.029 \to 11.081$, $+10.5\%$).
+- **Verdict:** **`QUALIFIED`** (Attribution ranking is preserved, while view sensitivity and temporal recency intensify).
+
+### 5.2 Track A vs Track B Architectural Benchmark
+- **Cross-Track Concordance:** Feature rank correlation between Track A (`repo_compat`) and Track B (`paper_aligned`) is **$\rho = 0.5757$** (Clean) and **$\rho = 0.6009$** (Stress).
+- **Graph Diffusion Disentanglement:** In Track B, dynamic adaptive graph share remains stable across regimes ($52.7\% \to 53.9\%$), reflecting balanced diffusion. In Track A, the model shifts aggressively toward dynamic unnormalized edges ($53.5\% \to 67.3\%$).
+- **Multi-Seed Stability:** Pairwise Spearman rank correlation across 5 seeds (`42-46`) is **$\bar{\rho} = 0.7132$** (min: 0.6078, max: 0.8400), confirming cross-seed explanation stability.

@@ -159,3 +159,45 @@ python src/run_repo_compat.py --mode train --epochs 2 --batch_size 32
 4. **Exact Calendar Boundaries for the 61-Day Stress Window:**
    - *Question:* Section 6.8 specifies a 61-trading-day stress window from November 2024 to January 2025 within the 368-sample out-of-sample period (2024-02-27 to 2025-08-15). Which exact trading dates demarcate this window?
    - *Proposed Resolution:* Pin the 61 trading dates between 2024-11-01 and 2025-01-31 from the aligned calendar into a versioned split manifest.
+
+---
+
+## 5. Explainability Layer Operational Commands (Phase 1–5)
+
+### Unified CLI Orchestrator (`src/cli.py`)
+
+1. **Instance-Level Model Explanations:**
+   ```bash
+   # Terminal report card
+   python src/cli.py explain --ticker HPE --split val_clean --index 0
+
+   # Export Markdown card, responsive HTML card, and JSON case record
+   python src/cli.py explain --ticker HPE --split val_clean --index 0 \
+     --save_card artifacts/explainability/hpe_card.md \
+     --save_html artifacts/explainability/hpe_card.html \
+     --save_json artifacts/explainability/hpe_case.json
+   ```
+
+2. **Phase 5 Dual-Track & Regime Shift Benchmark (Hypothesis H6):**
+   ```bash
+   python src/cli.py benchmark-regimes --samples-clean 25 --samples-stress 25 --output_dir artifacts/explainability
+   ```
+   Generates `dual_track_regime_benchmark.json`, SVG charts, and `regime_benchmark_dashboard.html`.
+
+3. **Controlled Hypothesis Experiments (H1–H4):**
+   ```bash
+   python src/cli.py evaluate-explanations --track paper_aligned --samples 15
+   python src/cli.py evaluate-explanations --track repo_compat --samples 15
+   ```
+
+4. **Model Performance Evaluation on Partitions:**
+   ```bash
+   python src/cli.py evaluate --track paper_aligned --split clean_val
+   python src/cli.py evaluate --track paper_aligned --split stress
+   python src/cli.py evaluate --track repo_compat --split clean_val
+   ```
+
+5. **Full Unit Test Suite Execution (42 Tests):**
+   ```bash
+   python -m unittest discover -s src -p "test_*.py"
+   ```
