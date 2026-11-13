@@ -197,7 +197,17 @@ python src/run_repo_compat.py --mode train --epochs 2 --batch_size 32
    python src/cli.py evaluate --track repo_compat --split clean_val
    ```
 
-5. **Full Unit Test Suite Execution (42 Tests):**
+5. **Full Unit Test Suite Execution (42+ Tests):**
    ```bash
    python -m unittest discover -s src -p "test_*.py"
    ```
+
+6. **Local LLM Narrative Reasoning (Qwen2.5-3B-Instruct):**
+   ```bash
+   # Explain prediction with plain English narrative synthesis
+   python src/cli.py explain --ticker HPE --split val_clean --index 0 --narrative
+
+   # Optional overrides for custom weights or cache location
+   python src/cli.py explain --ticker NVDA --split stress --index 5 --narrative --model-path /path/to/model.gguf
+   ```
+   For architectural details, VRAM budgeting, and prompt engineering rules, see [`docs/narrator_guide.md`](narrator_guide.md).

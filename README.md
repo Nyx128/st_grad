@@ -2,7 +2,7 @@
 
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%20%7C%203.12-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch 2.14.0](https://img.shields.io/badge/pytorch-2.14.0%2Bcu132-orange.svg)](https://pytorch.org/)
-[![Tests](https://img.shields.io/badge/tests-42%2F42%20passing-brightgreen.svg)]()
+[![Tests](https://img.shields.io/badge/tests-43%2F43%20passing-brightgreen.svg)]()
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Reproducible research and explainability analysis of:  
@@ -91,6 +91,9 @@ python src/cli.py evaluate --track repo_compat --split clean_val
 
 # 6. Audit Data Integrity and Validity Masks
 python src/cli.py audit-data
+
+# 7. Synthesize Plain English Narrative Reasoning via Local LLM (Qwen2.5-3B)
+python src/cli.py explain --ticker HPE --split val_clean --index 0 --narrative
 ```
 
 ### D. Track A: Evaluate Author Checkpoint
@@ -154,6 +157,7 @@ st_grad/
 │   ├── explainability_regime_benchmark.md # Phase 5 Dual-track & regime report
 │   ├── limitations.md               # Scientific caveats, leakage analysis, and diagnostics
 │   ├── model_architecture.md        # Equations (1)-(34) and parameter breakdown
+│   ├── narrator_guide.md            # Local LLM reasoning layer & grounding guide
 │   ├── paper_specification.md       # Full formal paper transcription and tensor shapes
 │   ├── paper_vs_code.md             # Line-by-line comparison between paper and repository
 │   ├── reproduction_benchmark.md    # Multi-seed performance benchmark vs Table 8
@@ -170,6 +174,7 @@ st_grad/
 │   │   ├── explainer.py             # High-level STGradExplainer engine
 │   │   ├── faithfulness.py          # Directional AOPC deletion/insertion & randomization
 │   │   ├── interventions.py         # MVCA view hooks & decoupled graph edge/node ablations
+│   │   ├── narrator.py              # Local LLM narrative reasoner (Qwen2.5-3B-Instruct)
 │   │   ├── plots.py                 # Zero-dependency SVG and HTML visual generator
 │   │   ├── regime_benchmark.py      # Dual-track cohort & regime shift evaluator (H6)
 │   │   ├── report.py                # Schema validator, JSON/NPZ, and HTML/MD card exporters
@@ -178,7 +183,7 @@ st_grad/
 │   ├── repo_compat/                 # Track A: repository-faithful reproduction
 │   ├── run_repo_compat.py           # Track A runner
 │   ├── test_data_leakage.py         # Data integrity audit suite (11 tests)
-│   ├── test_explainability.py       # Explainability unit tests (13 tests)
+│   ├── test_explainability.py       # Explainability unit tests (14 tests)
 │   ├── test_paper_aligned.py        # Track B model and gradient tests (6 tests)
 │   ├── test_paper_spec.py           # Mathematical equation tests (9 tests)
 │   └── test_repo_compat.py          # Track A checkpoint loading tests (3 tests)

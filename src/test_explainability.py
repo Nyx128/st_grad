@@ -210,7 +210,7 @@ class TestExplainability(unittest.TestCase):
             x=self.x,
             target_stock="S_0",
             target_date="2024-11-05",
-            ig_steps=20,
+            ig_steps=30,
             top_k_features=4,
             top_k_peers=3
         )
@@ -356,6 +356,75 @@ class TestExplainability(unittest.TestCase):
         track_comp = compare_tracks(cohort_clean, cohort_clean, cohort_stress, cohort_stress)
         self.assertIn('feature_rank_concordance_clean', track_comp)
         self.assertIn('view_comparison_clean', track_comp)
+
+    def test_14_narrator_prompt_construction(self):
+        """Verify LLM narrator configuration, prompt construction, and non-causal grounding directives."""
+        from src.explainability.narrator import ExplanationNarrator, NarratorConfig
+
+        cfg = NarratorConfig(model_path="/nonexistent/model.gguf", max_tokens=600)
+        narrator = ExplanationNarrator(cfg)
+
+        sys_prompt = narrator._build_system_prompt()
+        self.assertIn("STRICT GROUNDING RULES", sys_prompt)
+        self.assertIn("## Prediction Summary", sys_prompt)
+        self.assertIn("## Key Feature Drivers", sys_prompt)
+        self.assertIn("## Temporal Focus", sys_prompt)
+        self.assertIn("## Peer & Spatial Influence", sys_prompt)
+        self.assertIn("## Reliability & Convergence Diagnostics", sys_prompt)
+
+        # Mock case record matching schema
+        mock_rec = {
+            'ticker': 'NVDA',
+            'target_date': '2024-11-05',
+            'prediction': {
+                'trend_direction': 'UP',
+                'probability': 0.785,
+                'logit': 1.295,
+                'confidence': 0.570,
+                'predicted_class': 1
+            },
+            'ground_truth': {
+                'label': 1,
+                'direction': 'UP'
+            },
+            'attribution': {
+                'top_magnitude_features': [
+                    {'feature': 'BB_Position', 'importance_score': 1.45, 'direction': 'BULLISH', 'signed_impact': 1.45},
+                    {'feature': 'RSI', 'importance_score': 0.88, 'direction': 'BULLISH', 'signed_impact': 0.88}
+                ],
+                'top_bullish_features': [{'feature': 'BB_Position'}, {'feature': 'RSI'}],
+                'top_bearish_features': [],
+                'temporal_recency_ratio': 8.5,
+                'target_stock_intrinsic_share': 0.62,
+                'convergence': {
+                    'convergence_delta': 0.0015,
+                    'is_converged': True,
+                    'steps_used': 50,
+                    'quadrature_method': 'gauss_legendre'
+                }
+            },
+            'views': {
+                'importance_ranking': ['ST', 'DS', 'DT'],
+                'interventions': {
+                    'ST': {'delta_logit': 0.42},
+                    'DS': {'delta_logit': 0.28},
+                    'DT': {'delta_logit': 0.05}
+                }
+            },
+            'graph': {
+                'static_prior_ablation_delta_logit': 0.18,
+                'adaptive_graph_ablation_delta_logit': 0.21,
+                'top_influential_peer_tickers': [{'ticker': 'AMD', 'delta_logit': 0.14}]
+            }
+        }
+
+        user_prompt = narrator._build_user_prompt(mock_rec)
+        self.assertIn("TARGET STOCK: NVDA", user_prompt)
+        self.assertIn("OUTCOME: CORRECT", user_prompt)
+        self.assertIn("BB_Position", user_prompt)
+        self.assertIn("Temporal Recency Ratio: 8.50x", user_prompt)
+        self.assertIn("Spatio-Temporal View (ST): |Δlogit| = 0.420", user_prompt)
+        self.assertIn("AMD", user_prompt)
 
 
 if __name__ == '__main__':

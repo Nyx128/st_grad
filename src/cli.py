@@ -117,6 +117,25 @@ def cmd_explain(args):
             f.write(html)
         print(f"HTML card saved to: {args.save_html}")
 
+    # Generate narrative reasoning via local LLM if requested
+    if getattr(args, 'narrative', False):
+        from src.explainability.narrator import ExplanationNarrator, NarratorConfig
+        n_cfg = NarratorConfig(
+            model_path=getattr(args, 'model_path', None),
+            cache_dir=getattr(args, 'cache_dir', 'models/llm'),
+            n_gpu_layers=getattr(args, 'narrator_gpu_layers', -1)
+        )
+        narrator = ExplanationNarrator(config=n_cfg)
+        narrative_text = narrator.generate_narrative(
+            record=record,
+            stgrad_adapter=explainer.adapter
+        )
+        print("\n" + "=" * 70)
+        print("NATURAL LANGUAGE MODEL REASONING (Qwen2.5-3B-Instruct)")
+        print("=" * 70 + "\n")
+        print(narrative_text)
+        print("\n" + "=" * 70 + "\n")
+
 
 def cmd_evaluate(args):
     """Evaluate predictive performance metrics for either track."""
@@ -198,6 +217,10 @@ def main():
     p_exp.add_argument("--save_json", type=str, default=None)
     p_exp.add_argument("--save_card", type=str, default=None)
     p_exp.add_argument("--save_html", type=str, default=None)
+    p_exp.add_argument("--narrative", action="store_true", help="Generate executive English narrative via local LLM")
+    p_exp.add_argument("--model-path", type=str, default=None, help="Custom path to GGUF model weights")
+    p_exp.add_argument("--cache-dir", type=str, default="models/llm", help="Directory to cache downloaded GGUF weights")
+    p_exp.add_argument("--narrator-gpu-layers", type=int, default=-1, help="Number of GPU layers to offload (-1 for all)")
     p_exp.set_defaults(func=cmd_explain)
 
     # Subcommand: evaluate
