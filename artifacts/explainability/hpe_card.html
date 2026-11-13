@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ST-GRAD Explanation Card: HPE</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #0f172a; color: #f8fafc; padding: 2rem; max-width: 900px; margin: auto; }
+  .card { background: #1e293b; border-radius: 12px; padding: 2rem; box-shadow: 0 10px 25px rgba(0,0,0,0.5); border: 1px solid #334155; }
+  .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; padding-bottom: 1rem; margin-bottom: 1.5rem; }
+  .ticker { font-size: 2rem; font-weight: 700; color: #38bdf8; }
+  .badge { font-size: 1.25rem; font-weight: 700; padding: 0.3rem 1rem; border-radius: 8px; color: white; background: #ef4444; }
+  .metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+  .metric-box { background: #0f172a; padding: 1rem; border-radius: 8px; border: 1px solid #334155; }
+  .metric-label { font-size: 0.85rem; color: #94a3b8; text-transform: uppercase; }
+  .metric-val { font-size: 1.5rem; font-weight: 600; color: #f1f5f9; }
+  table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+  th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #334155; }
+  th { background: #0f172a; color: #94a3b8; }
+  .caveat { background: #451a03; border-left: 4px solid #f59e0b; padding: 0.75rem 1rem; margin-top: 1.5rem; border-radius: 4px; font-size: 0.9rem; color: #fef3c7; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="header">
+    <div>
+      <div class="ticker">HPE</div>
+      <div style="color: #94a3b8; font-size: 0.9rem;">Target Date: 2024-02-28 | Track: paper_aligned</div>
+    </div>
+    <div class="badge">DOWN (2.1%)</div>
+  </div>
+
+  <div class="metric-grid">
+    <div class="metric-box">
+      <div class="metric-label">Pre-Sigmoid Logit</div>
+      <div class="metric-val">-3.8553</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-label">Model Confidence</div>
+      <div class="metric-val">95.9%</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-label">Intrinsic Reliance</div>
+      <div class="metric-val">54.3%</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-label">IG Completeness</div>
+      <div class="metric-val" style="color: #10b981;">0.24%</div>
+    </div>
+  </div>
+
+  <h3>Top Technical Drivers (Integrated Gradients)</h3>
+  <table>
+    <thead>
+      <tr><th>Rank</th><th>Indicator</th><th>Importance</th><th>Direction</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><code>BB_Position</code></td>
+        <td>2.373</td>
+        <td style="color: #ef4444;"><strong>▼ Bearish (-1.527)</strong></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><code>RSI</code></td>
+        <td>1.913</td>
+        <td style="color: #ef4444;"><strong>▼ Bearish (-1.197)</strong></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><code>Close_MA_Ratio</code></td>
+        <td>1.018</td>
+        <td style="color: #ef4444;"><strong>▼ Bearish (-0.645)</strong></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><code>RSI_Relative</code></td>
+        <td>0.999</td>
+        <td style="color: #ef4444;"><strong>▼ Bearish (-0.564)</strong></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><code>Volatility</code></td>
+        <td>0.752</td>
+        <td style="color: #10b981;"><strong>▲ Bullish (+0.080)</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="caveat">
+    <strong>Scientific Disclaimer:</strong> Model attributions reflect mathematical feature reliance, not real-world market causality.
+  </div>
+</div>
+</body>
+</html>

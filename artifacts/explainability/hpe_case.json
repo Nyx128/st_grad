@@ -1,0 +1,232 @@
+{
+  "ticker": "HPE",
+  "target_stock_idx": 43,
+  "target_date": "2024-02-28",
+  "input_window_dates": [
+    "N/A",
+    "N/A"
+  ],
+  "timestamp": "2026-11-13T01:39:52.617760",
+  "prediction": {
+    "logit": -3.8552846908569336,
+    "probability": 0.02072879672050476,
+    "predicted_class": 0,
+    "trend_direction": "DOWN",
+    "confidence": 0.9585424065589905
+  },
+  "attribution": {
+    "top_magnitude_features": [
+      {
+        "rank": 1,
+        "feature": "BB_Position",
+        "importance_score": 2.372776985168457,
+        "signed_impact": -1.5267603397369385,
+        "direction": "BEARISH"
+      },
+      {
+        "rank": 2,
+        "feature": "RSI",
+        "importance_score": 1.9125837087631226,
+        "signed_impact": -1.1972527503967285,
+        "direction": "BEARISH"
+      },
+      {
+        "rank": 3,
+        "feature": "Close_MA_Ratio",
+        "importance_score": 1.0180970430374146,
+        "signed_impact": -0.6445659399032593,
+        "direction": "BEARISH"
+      },
+      {
+        "rank": 4,
+        "feature": "RSI_Relative",
+        "importance_score": 0.999445915222168,
+        "signed_impact": -0.5637646913528442,
+        "direction": "BEARISH"
+      },
+      {
+        "rank": 5,
+        "feature": "Volatility",
+        "importance_score": 0.7524923086166382,
+        "signed_impact": 0.07962983101606369,
+        "direction": "BULLISH"
+      }
+    ],
+    "top_bullish_features": [
+      {
+        "rank": 1,
+        "feature": "BB_Width",
+        "positive_contribution": 0.11625078320503235
+      },
+      {
+        "rank": 2,
+        "feature": "VWAP",
+        "positive_contribution": 0.08437255024909973
+      },
+      {
+        "rank": 3,
+        "feature": "Volatility",
+        "positive_contribution": 0.07962983101606369
+      },
+      {
+        "rank": 4,
+        "feature": "Close_vs_High",
+        "positive_contribution": 0.06475801765918732
+      },
+      {
+        "rank": 5,
+        "feature": "High_Low_Ratio",
+        "positive_contribution": 0.04688108712434769
+      }
+    ],
+    "top_bearish_features": [
+      {
+        "rank": 1,
+        "feature": "BB_Position",
+        "negative_contribution": -1.5267603397369385
+      },
+      {
+        "rank": 2,
+        "feature": "RSI",
+        "negative_contribution": -1.1972527503967285
+      },
+      {
+        "rank": 3,
+        "feature": "Close_MA_Ratio",
+        "negative_contribution": -0.6445659399032593
+      },
+      {
+        "rank": 4,
+        "feature": "RSI_Relative",
+        "negative_contribution": -0.5637646913528442
+      },
+      {
+        "rank": 5,
+        "feature": "ROC",
+        "negative_contribution": -0.408550500869751
+      }
+    ],
+    "temporal_recency_ratio": 6.869221362317099,
+    "target_stock_intrinsic_share": 0.5428366717823321,
+    "convergence": {
+      "is_converged": true,
+      "convergence_delta": 0.0023690393315809184,
+      "absolute_convergence_delta": 0.011564373970031738,
+      "steps_used": 50,
+      "quadrature_method": "gauss_legendre",
+      "baseline_strategy": "zero"
+    }
+  },
+  "views": {
+    "importance_ranking": [
+      "DS",
+      "ST",
+      "DT"
+    ],
+    "interventions": {
+      "ST": {
+        "delta_logit": -0.17587804794311523,
+        "delta_prob": -0.0038878750056028366,
+        "importance_score": 0.17587804794311523
+      },
+      "DS": {
+        "delta_logit": -0.7606625556945801,
+        "delta_prob": -0.02260083705186844,
+        "importance_score": 0.7606625556945801
+      },
+      "DT": {
+        "delta_logit": 0.13886809349060059,
+        "delta_prob": 0.0026390179991722107,
+        "importance_score": 0.13886809349060059
+      }
+    },
+    "global_fusion_weights": [
+      {
+        "block_idx": 0,
+        "st_weight": 0.34886062145233154,
+        "ds_weight": 0.3323344886302948,
+        "dt_weight": 0.31880494952201843
+      },
+      {
+        "block_idx": 1,
+        "st_weight": 0.34901875257492065,
+        "ds_weight": 0.3273572027683258,
+        "dt_weight": 0.32362404465675354
+      }
+    ]
+  },
+  "graph": {
+    "static_prior_ablation_delta_logit": 0.16052865982055664,
+    "adaptive_graph_ablation_delta_logit": 0.06179165840148926,
+    "total_spatial_ablation_delta_logit": 0.23949384689331055,
+    "top_influential_peer_tickers": [
+      {
+        "ticker": "ICLR",
+        "stock_idx": 23,
+        "delta_logit": 0.057619571685791016
+      },
+      {
+        "ticker": "CTRA",
+        "stock_idx": 10,
+        "delta_logit": 0.05042457580566406
+      },
+      {
+        "ticker": "CAJPY",
+        "stock_idx": 42,
+        "delta_logit": 0.0418553352355957
+      },
+      {
+        "ticker": "SBLK",
+        "stock_idx": 35,
+        "delta_logit": 0.041304826736450195
+      },
+      {
+        "ticker": "TNET",
+        "stock_idx": 37,
+        "delta_logit": 0.039940595626831055
+      }
+    ],
+    "top_influential_edges": [
+      {
+        "peer_ticker": "HUBG",
+        "stock_idx": 33,
+        "delta_logit": 0.012740612030029297
+      },
+      {
+        "peer_ticker": "NOV",
+        "stock_idx": 17,
+        "delta_logit": 0.012707233428955078
+      },
+      {
+        "peer_ticker": "SOUHY",
+        "stock_idx": 6,
+        "delta_logit": 0.012314558029174805
+      },
+      {
+        "peer_ticker": "VWDRY",
+        "stock_idx": 39,
+        "delta_logit": 0.01180267333984375
+      },
+      {
+        "peer_ticker": "LYSDY",
+        "stock_idx": 3,
+        "delta_logit": 0.011474609375
+      }
+    ]
+  },
+  "provenance": {
+    "track": "paper_aligned",
+    "checkpoint_hash": "a00bad84efad8588231a822e29555d41f810486d651bfd434c41f56039b71dd5",
+    "device": "cuda"
+  },
+  "caveats": [
+    "Model attribution identifies features correlated with predictions, NOT real-world economic causality.",
+    "Technical indicators exhibit multicollinearity; credit may be split among correlated proxies.",
+    "Interventions measure model sensitivity under synthetic ablation and do not simulate market mechanics."
+  ],
+  "ground_truth": {
+    "label": 0,
+    "direction": "DOWN",
+    "is_valid_sample": true
+  }
+}
